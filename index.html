@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,15 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div id="loading-screen" class="d-none">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Catching 'em all...</p>
+        </div>
+    </div>
+    
     <header>
         <div class="logo-container">
             <img src="./assets/img/pokeball_painted.png" alt="Pokéball Icon">
@@ -23,7 +32,7 @@
 
     <main>
         <div id="pokemon-list-container">
-            
+
         </div>
 
         <div class="load-more-pokemon-section">
@@ -37,4 +46,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
