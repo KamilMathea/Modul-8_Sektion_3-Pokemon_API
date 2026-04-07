@@ -55,3 +55,40 @@ main {
 .search-bar button:hover {
     background-color: #b32a00;
 }
+
+#pokemon-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.load-more-pokemon-section {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+#load-more-btn {
+    padding: 12px 24px;
+    background-color: #ff3d00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+#load-more-btn:active {
+    transform: scale(0.95);
+}
+
+#load-more-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
