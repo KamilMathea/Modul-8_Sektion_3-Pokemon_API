@@ -5,7 +5,7 @@ async function init() {
     toggleLoadingScreen();
     try {
         await getPokemonList();
-        console.log("Alle Details sind da:", allPokemons);
+        renderPokemonList();
     } catch (error) {
         console.error("Fehler beim Laden:", error);
     }
@@ -35,4 +35,14 @@ async function getPokemonDetails(url) {
     let pokemonDetails = await response.json();
     
     allPokemons.push(pokemonDetails);
+}
+
+function renderPokemonList() {
+    let container = document.getElementById('pokemon-list-container');
+    container.innerHTML = "";
+
+    for (let i = 0; i < allPokemons.length; i++) {
+        const pokemon = allPokemons[i];
+        container.innerHTML += getPokemonCardTemplate(pokemon, i);
+    }
 }
