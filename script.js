@@ -22,8 +22,6 @@ async function getPokemonList() {
     let responseToJson = await response.json();
     let pokemonArray = responseToJson.results;
 
-    console.log("Die ersten 20 Pokemon:", responseToJson.results);
-
     for (let i = 0; i < pokemonArray.length; i++) {
         let pokemonUrl = pokemonArray[i].url;
         await getPokemonDetails(pokemonUrl);
