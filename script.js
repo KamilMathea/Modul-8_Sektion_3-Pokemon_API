@@ -44,3 +44,29 @@ function renderPokemonList() {
         container.innerHTML += getPokemonCardTemplate(pokemon, i);
     }
 }
+
+function openPokemonDetail(i) {
+    const pokemon = allPokemons[i];
+    const content = document.getElementById('pokemon-card-content');
+    
+    content.innerHTML = getModalHeaderTemplate(pokemon);
+    content.innerHTML += getModalStatsTemplate(pokemon);
+    content.innerHTML += getModalFooterTemplate(i);
+    
+    document.getElementById('pokemon-detail-card').showModal();
+}
+
+function navigatePokemonCard(newIndex) {
+    if (newIndex < 0) {
+        newIndex = allPokemons.length - 1;
+    } else if (newIndex >= allPokemons.length) {
+        newIndex = 0;
+    }
+    
+    openPokemonDetail(newIndex);
+}
+
+function closePokemonCard() {
+    let dialog = document.getElementById('pokemon-detail-card');
+    dialog.close();
+}

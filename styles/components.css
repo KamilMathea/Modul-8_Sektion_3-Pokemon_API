@@ -68,3 +68,27 @@
     margin-bottom: 12px;
     background-image: linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 }
+
+#pokemon-detail-card {
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    background: transparent;
+    margin: auto;
+}
+
+#pokemon-detail-card::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.pokemon-card-content {
+    background-color: #0b2b35;
+    width: 90vw;
+    max-width: 500px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
