@@ -1,5 +1,6 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 let allPokemons = [];
+let currentPokemonIndex = 0;
 
 async function init() {
     toggleLoadingScreen();
@@ -18,7 +19,7 @@ function toggleLoadingScreen() {
 }
 
 async function getPokemonList() {
-    let response = await fetch(BASE_URL + "?limit=20&offset=0");
+    let response = await fetch(BASE_URL + `?limit=20&offset=${currentPokemonIndex}`);
     let responseToJson = await response.json();
     let pokemonArray = responseToJson.results;
 
@@ -26,6 +27,8 @@ async function getPokemonList() {
         let pokemonUrl = pokemonArray[i].url;
         await getPokemonDetails(pokemonUrl);
     }
+
+    currentPokemonIndex += 20;
 }
 
 async function getPokemonDetails(url) {
@@ -69,4 +72,15 @@ function navigatePokemonCard(newIndex) {
 function closePokemonCard() {
     let dialog = document.getElementById('pokemon-detail-card');
     dialog.close();
+}
+
+async function loadMorePokemon() {
+    toggleLoadingScreen();
+    try {
+        await getPokemonList();
+        renderPokemonList();
+    } catch (error) {
+        console.error("Fehler beim Laden:", error);
+    }
+    toggleLoadingScreen();
 }
