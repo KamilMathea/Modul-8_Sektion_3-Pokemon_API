@@ -1,5 +1,6 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 let allPokemons = [];
+let filteredPokemons = [];
 let currentPokemonIndex = 0;
 
 async function init() {
@@ -36,19 +37,54 @@ async function getPokemonDetails(url) {
     let pokemonDetails = await response.json();
     
     allPokemons.push(pokemonDetails);
+    filteredPokemons = allPokemons;
 }
 
 function renderPokemonList() {
     let container = document.getElementById('pokemon-list-container');
     container.innerHTML = "";
 
-    for (let i = 0; i < allPokemons.length; i++) {
-        const pokemon = allPokemons[i];
+    for (let i = 0; i < filteredPokemons.length; i++) {
+        const pokemon = filteredPokemons[i];
         container.innerHTML += getPokemonCardTemplate(pokemon, i);
     }
 }
 
-function openPokemonDetail(i) {
+function filterPokemon() {
+    let searchInput = document.getElementById('search-input').value.toLowerCase();
+    filteredPokemons = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchInput));
+    
+    handleLoadMoreBtn(searchInput);
+    renderPokemonList();
+}
+
+function handleLoadMoreBtn(searchInput) {
+    let loadMoreBtn = document.getElementById('load-more-btn');
+    if (searchInput.length > 0) {
+        loadMoreBtn.classList.add('d-none');
+    } else {
+        loadMoreBtn.classList.remove('d-none');
+    }
+}
+
+function openPokemonDetailByName(pokemonName) {
+    for (let i = 0; i < allPokemons.length; i++) {
+
+        if (allPokemons[i].name === pokemonName) {
+            const pokemon = allPokemons[i];
+            const content = document.getElementById('pokemon-card-content');
+            
+            content.innerHTML = getModalHeaderTemplate(pokemon);
+            content.innerHTML += getModalStatsTemplate(pokemon);
+            content.innerHTML += getModalFooterTemplate(i);
+            
+            document.getElementById('pokemon-detail-card').showModal();
+            return;
+        }
+    }
+}
+
+function updateModal(i) {
     const pokemon = allPokemons[i];
     const content = document.getElementById('pokemon-card-content');
     
@@ -66,7 +102,7 @@ function navigatePokemonCard(newIndex) {
         newIndex = 0;
     }
     
-    openPokemonDetail(newIndex);
+    updateModal(newIndex);
 }
 
 function closePokemonCard() {

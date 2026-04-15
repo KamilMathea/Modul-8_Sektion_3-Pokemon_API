@@ -2,7 +2,7 @@ function getPokemonCardTemplate(pokemon, i) {
     const mainType = pokemon.types[0].type.name;
 
     return `
-        <div class="pokemon-card" onclick="openPokemonDetail(${i})">
+        <div class="pokemon-card" onclick="openPokemonDetailByName('${pokemon.name}')">
             <div class="pokemon-image-container ${mainType}">
                 <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
             </div>
