@@ -66,3 +66,7 @@ function getModalFooterTemplate(i) {
         </div>
     `;
 }
+
+function getNoPokemonFoundTemplate(searchTerm) {
+    return `<div class="no-pokemon">No Pokémon found with "${searchTerm}".</div>`;
+}

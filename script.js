@@ -52,10 +52,36 @@ function renderPokemonList() {
 
 function filterPokemon() {
     let searchInput = document.getElementById('search-input').value.toLowerCase();
-    filteredPokemons = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchInput));
     
+    if (searchInput.length > 0 && searchInput.length < 3) {
+        return;
+    }
+
+    if (searchInput.length === 0) {
+        filteredPokemons = allPokemons;
+        handleLoadMoreButton(searchInput);
+        renderPokemonList();
+        return;
+    }
+
+    searchAndRender(searchInput);
+}
+
+function searchAndRender(searchInput) {
+    filteredPokemons = allPokemons.filter(pokemon => pokemon.name.toLowerCase().includes(searchInput));
+
     handleLoadMoreBtn(searchInput);
-    renderPokemonList();
+
+    if (filteredPokemons.length === 0) {
+        renderNoResults(searchInput);
+    } else {
+        renderPokemonList();
+    }
+}
+
+function renderNoResults(searchTerm) {
+    let container = document.getElementById('pokemon-list-container');
+    container.innerHTML = getNoPokemonFoundTemplate(searchTerm);
 }
 
 function handleLoadMoreBtn(searchInput) {
