@@ -103,6 +103,8 @@ function openPokemonDetailByName(pokemonName) {
             content.innerHTML = getModalHeaderTemplate(pokemon);
             content.innerHTML += getModalStatsTemplate(pokemon);
             content.innerHTML += getModalFooterTemplate(i);
+
+            document.body.classList.add('no-scroll');
             
             document.getElementById('pokemon-detail-card').showModal();
             return;
@@ -134,6 +136,7 @@ function navigatePokemonCard(newIndex) {
 function closePokemonCard() {
     let dialog = document.getElementById('pokemon-detail-card');
     dialog.close();
+    document.body.classList.remove('no-scroll');
 }
 
 async function loadMorePokemon() {
@@ -146,3 +149,7 @@ async function loadMorePokemon() {
     }
     toggleLoadingScreen();
 }
+
+document.getElementById('pokemon-detail-card')?.addEventListener('close', () => {
+    document.body.classList.remove('no-scroll');
+});

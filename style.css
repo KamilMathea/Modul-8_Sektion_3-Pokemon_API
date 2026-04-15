@@ -24,6 +24,10 @@ main {
     display: none !important;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
