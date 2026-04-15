@@ -84,11 +84,75 @@
 
 .pokemon-card-content {
     background-color: #0b2b35;
-    width: 90vw;
-    max-width: 500px;
-    min-height: 400px;
+    width: 95vw;
+    max-width: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.modal-header {
+    position: relative;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.modal-header h2 {
+    text-transform: capitalize;
+    font-size: 28px;
+}
+
+.modal-header span {
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.modal-header img {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
+}
+
+.modal-stats {
+    padding: 50px 20px 20px 20px;
+    flex-grow: 1;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #0b2b35;
     color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-footer button:hover {
+    background-color: #ff3d00;
 }
