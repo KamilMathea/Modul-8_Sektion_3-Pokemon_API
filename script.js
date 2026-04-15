@@ -59,7 +59,7 @@ function filterPokemon() {
 
     if (searchInput.length === 0) {
         filteredPokemons = allPokemons;
-        handleLoadMoreButton(searchInput);
+        handleLoadMoreBtn(searchInput);
         renderPokemonList();
         return;
     }
