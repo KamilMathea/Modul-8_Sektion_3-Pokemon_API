@@ -125,6 +125,28 @@
     filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
 }
 
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+    background-color: rgba(255, 61, 0, 0.8);
+}
+
 .modal-stats {
     padding: 50px 20px 20px 20px;
     flex-grow: 1;

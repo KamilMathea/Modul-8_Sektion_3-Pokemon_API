@@ -27,6 +27,7 @@ function getModalHeaderTemplate(pokemon) {
     const mainType = pokemon.types[0].type.name;
     return `
         <header class="modal-header ${mainType}">
+        <button class="close-btn" onclick="closePokemonCard()">&times;</button>
             <div class="header-nav">
                 <h2>${pokemon.name}</h2>
                 <span>#${pokemon.id}</span>
