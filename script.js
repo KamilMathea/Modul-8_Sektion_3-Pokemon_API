@@ -46,7 +46,10 @@ function renderPokemonList() {
 
     for (let i = 0; i < filteredPokemons.length; i++) {
         const pokemon = filteredPokemons[i];
-        container.innerHTML += getPokemonCardTemplate(pokemon, i);
+
+        const typesHtml = getPokemonTypesHtml(pokemon);
+
+        container.innerHTML += getPokemonCardTemplate(pokemon, i, typesHtml);
     }
 }
 
@@ -99,8 +102,9 @@ function openPokemonDetailByName(pokemonName) {
         if (allPokemons[i].name === pokemonName) {
             const pokemon = allPokemons[i];
             const content = document.getElementById('pokemon-card-content');
+            const typesHtml = getPokemonTypesHtml(pokemon);
             
-            content.innerHTML = getModalHeaderTemplate(pokemon);
+            content.innerHTML = getModalHeaderTemplate(pokemon, typesHtml);
             content.innerHTML += getModalStatsTemplate(pokemon);
             content.innerHTML += getModalFooterTemplate(i);
 
@@ -112,11 +116,21 @@ function openPokemonDetailByName(pokemonName) {
     }
 }
 
+function getPokemonTypesHtml(pokemon) {
+    let typesHTML = "";
+    for (let j = 0; j < pokemon.types.length; j++) {
+        const typeName = pokemon.types[j].type.name;
+        typesHTML += getTypeTemplate(typeName); 
+    }
+    return typesHTML;
+}
+
 function updateModal(i) {
     const pokemon = allPokemons[i];
     const content = document.getElementById('pokemon-card-content');
+    const typesHtml = getPokemonTypesHtml(pokemon);
     
-    content.innerHTML = getModalHeaderTemplate(pokemon);
+    content.innerHTML = getModalHeaderTemplate(pokemon, typesHtml);
     content.innerHTML += getModalStatsTemplate(pokemon);
     content.innerHTML += getModalFooterTemplate(i);
     

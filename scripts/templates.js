@@ -1,4 +1,4 @@
-function getPokemonCardTemplate(pokemon, i) {
+function getPokemonCardTemplate(pokemon, i, typesHtml) {
     const mainType = pokemon.types[0].type.name;
 
     return `
@@ -8,22 +8,17 @@ function getPokemonCardTemplate(pokemon, i) {
             </div>
             <h3>${pokemon.name}</h3>
             <div class="pokemon-types">
-                ${getTypesTemplate(pokemon)} 
+                ${typesHtml} 
             </div>
         </div>
     `;
 }
 
-function getTypesTemplate(pokemon) {
-    let typesHTML = "";
-    for (let j = 0; j < pokemon.types.length; j++) {
-        const typeName = pokemon.types[j].type.name;
-        typesHTML += `<span class="type-badge ${typeName}">${typeName}</span>`;
-    }
-    return typesHTML;
+function getTypeTemplate(typeName) {
+    return `<span class="type-badge ${typeName}">${typeName}</span>`;
 }
 
-function getModalHeaderTemplate(pokemon) {
+function getModalHeaderTemplate(pokemon, typesHtml) {
     const mainType = pokemon.types[0].type.name;
     return `
         <header class="modal-header ${mainType}">
