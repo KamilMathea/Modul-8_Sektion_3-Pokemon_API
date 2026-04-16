@@ -20,24 +20,30 @@
             <p>Catching 'em all...</p>
         </div>
     </div>
-    
+
     <header>
-        <div class="logo-container">
-            <img src="./assets/img/pokeball_painted.png" alt="Pokéball Icon">
-            <span>Pokédex</span>
-        </div>
-        <div class="search-bar">
-            <input id="search-input" type="text" placeholder="Search Pokémon..." oninput="filterPokemon()">
+        <div class="content-wrapper">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="./assets/img/pokeball_painted.png" alt="Pokéball Icon">
+                    <span>Pokédex</span>
+                </div>
+                <div class="search-bar">
+                    <input id="search-input" type="text" placeholder="Search Pokémon..." oninput="filterPokemon()">
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
-        <div id="pokemon-list-container">
+        <div class="content-wrapper">
+            <div id="pokemon-list-container">
 
-        </div>
+            </div>
 
-        <div class="load-more-pokemon-section">
-            <button id="load-more-btn" onclick="loadMorePokemon()">Load more Pokemon</button>
+            <div class="load-more-pokemon-section">
+                <button id="load-more-btn" onclick="loadMorePokemon()">Load more Pokemon</button>
+            </div>
         </div>
     </main>
 
@@ -48,7 +54,9 @@
     </dialog>
 
     <footer>
-
+        <div class="content-wrapper">
+            <p>&copy; 2026 Kamil. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="./scripts/templates.js"></script>

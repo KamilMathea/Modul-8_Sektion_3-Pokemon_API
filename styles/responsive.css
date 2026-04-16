@@ -1,16 +1,16 @@
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .search-bar {
-        width: 100%;
-        justify-content: center;
+    .content-wrapper {
+        padding: 0 16px;
     }
 }
 
 @media (max-width: 550px) {
+    .header-content {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+
     #pokemon-list-container {
         padding: 10px;
         gap: 12px;
